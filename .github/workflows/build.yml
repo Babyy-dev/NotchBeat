@@ -1,9 +1,11 @@
 name: Build
 
+# Runs only when started by hand: Actions tab → Build → Run workflow.
+# To build on every push again, add back:
+#   push:
+#     branches: [main]
+#   pull_request:
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
 
 jobs:

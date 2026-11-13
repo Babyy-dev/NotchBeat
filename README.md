@@ -86,7 +86,7 @@ cd notchbeat\windows
 - No permissions are needed. Music apps report what they're playing to Windows, the same info shown in the volume flyout's media controls.
 - To pick the position, click the **tray icon** (next to the clock) → **Settings → Position**.
 
-> **Tip:** each push to `main` builds both apps on GitHub Actions. Download the ready-made `NotchBeat-Windows` exe from the run's **Artifacts**.
+> **Tip:** to get a ready-made exe without installing .NET, open the **Actions** tab → **Build** → **Run workflow**, then download `NotchBeat-Windows` from the run's **Artifacts**.
 
 ## 🎮 Usage
 
