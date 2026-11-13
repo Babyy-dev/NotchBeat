@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <!-- 19041 = Windows 10 version 2004, needed for the media session API. -->
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+    <UseWPF>true</UseWPF>
+    <!-- Only used for the tray icon and the list of screens. -->
+    <UseWindowsForms>true</UseWindowsForms>
+    <!-- WPF and Windows Forms share many type names, so every file lists its own usings. -->
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>NotchBeat</AssemblyName>
+    <RootNamespace>NotchBeat</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Product>NotchBeat</Product>
+    <Version>0.2.0</Version>
+    <!-- Lets the project build on macOS and Linux too (for CI); it only runs on Windows. -->
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <!-- WFAC010 is a Windows Forms hint; this WPF app sets its DPI mode in app.manifest on purpose. -->
+    <NoWarn>$(NoWarn);WFAC010</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NAudio.Wasapi" Version="2.2.1" />
+  </ItemGroup>
+
+</Project>

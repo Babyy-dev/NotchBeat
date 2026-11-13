@@ -1,0 +1,121 @@
+<Window x:Class="NotchBeat.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="NotchBeat Settings"
+        Width="460"
+        SizeToContent="Height"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Segoe UI Variable Text, Segoe UI"
+        FontSize="13"
+        Background="#F3F3F3">
+
+    <Window.Resources>
+        <Style x:Key="Section" TargetType="Border">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="#E5E5E5" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Padding" Value="14,10" />
+            <Setter Property="Margin" Value="0,0,0,12" />
+        </Style>
+        <Style x:Key="SectionTitle" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Margin" Value="2,0,0,6" />
+        </Style>
+        <Style x:Key="Caption" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#6B6B6B" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="Margin" Value="0,4,0,2" />
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Width" Value="190" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+        </Style>
+        <Style TargetType="CheckBox">
+            <Setter Property="Margin" Value="0,4" />
+        </Style>
+        <Style x:Key="Row" TargetType="DockPanel">
+            <Setter Property="Margin" Value="0,4" />
+        </Style>
+    </Window.Resources>
+
+    <StackPanel Margin="18,16,18,6">
+
+        <TextBlock Text="Music" Style="{StaticResource SectionTitle}" />
+        <Border Style="{StaticResource Section}">
+            <StackPanel>
+                <DockPanel Style="{StaticResource Row}">
+                    <ComboBox x:Name="SourcePicker" DockPanel.Dock="Right" />
+                    <TextBlock Text="Follow" VerticalAlignment="Center" />
+                </DockPanel>
+                <TextBlock Style="{StaticResource Caption}"
+                           Text="Automatic follows any app that shows up in the Windows media controls: Spotify, Apple Music, browsers and more." />
+            </StackPanel>
+        </Border>
+
+        <TextBlock Text="Position" Style="{StaticResource SectionTitle}" />
+        <Border Style="{StaticResource Section}">
+            <StackPanel>
+                <DockPanel Style="{StaticResource Row}">
+                    <ComboBox x:Name="PositionPicker" DockPanel.Dock="Right" />
+                    <TextBlock Text="Place the island" VerticalAlignment="Center" />
+                </DockPanel>
+                <DockPanel x:Name="MarginRow" Style="{StaticResource Row}">
+                    <TextBlock x:Name="MarginValue" DockPanel.Dock="Right" Width="44" TextAlignment="Right"
+                               VerticalAlignment="Center" />
+                    <Slider x:Name="MarginSlider" DockPanel.Dock="Right" Width="150" Minimum="0" Maximum="600"
+                            SmallChange="4" LargeChange="40" IsSnapToTickEnabled="True" TickFrequency="4"
+                            VerticalAlignment="Center" />
+                    <TextBlock Text="Distance from edge" VerticalAlignment="Center" />
+                </DockPanel>
+                <DockPanel Style="{StaticResource Row}">
+                    <ComboBox x:Name="DisplayPicker" DockPanel.Dock="Right" />
+                    <TextBlock Text="Screen" VerticalAlignment="Center" />
+                </DockPanel>
+            </StackPanel>
+        </Border>
+
+        <TextBlock Text="Look" Style="{StaticResource SectionTitle}" />
+        <Border Style="{StaticResource Section}">
+            <StackPanel>
+                <DockPanel Style="{StaticResource Row}">
+                    <ComboBox x:Name="ThemePicker" DockPanel.Dock="Right" />
+                    <TextBlock Text="Theme" VerticalAlignment="Center" />
+                </DockPanel>
+                <CheckBox x:Name="SpinArtworkToggle" Content="Spinning album cover" />
+            </StackPanel>
+        </Border>
+
+        <TextBlock Text="Waves" Style="{StaticResource SectionTitle}" />
+        <Border Style="{StaticResource Section}">
+            <StackPanel>
+                <DockPanel Style="{StaticResource Row}">
+                    <ComboBox x:Name="WaveStylePicker" DockPanel.Dock="Right" />
+                    <TextBlock Text="Style" VerticalAlignment="Center" />
+                </DockPanel>
+                <CheckBox x:Name="ReactiveWavesToggle" Content="Move with the music" />
+                <TextBlock Style="{StaticResource Caption}"
+                           Text="Listens to what your speakers play, live. Nothing is recorded or saved. Off uses a smooth animation instead." />
+            </StackPanel>
+        </Border>
+
+        <TextBlock Text="Lyrics" Style="{StaticResource SectionTitle}" />
+        <Border Style="{StaticResource Section}">
+            <StackPanel>
+                <CheckBox x:Name="ShowLyricsToggle" Content="Show synced lyrics" />
+                <TextBlock Style="{StaticResource Caption}"
+                           Text="Click the lyric line in the player for full karaoke lyrics. Lyrics come from lrclib.net; the song title, artist and album are sent to look them up." />
+            </StackPanel>
+        </Border>
+
+        <TextBlock Text="General" Style="{StaticResource SectionTitle}" />
+        <Border Style="{StaticResource Section}">
+            <StackPanel>
+                <CheckBox x:Name="SystemActivityToggle" Content="Show volume, audio device and charging" />
+                <CheckBox x:Name="LaunchAtLoginToggle" Content="Start NotchBeat when I sign in" />
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</Window>

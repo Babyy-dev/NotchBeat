@@ -1,0 +1,36 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  macos:
+    name: macOS app
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: ./macos/scripts/build-app.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NotchBeat-macOS
+          path: macos/build/NotchBeat.app
+
+  windows:
+    name: Windows app
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Build
+        shell: pwsh
+        run: ./windows/build.ps1 -SelfContained
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NotchBeat-Windows
+          path: windows/publish/NotchBeat.exe
